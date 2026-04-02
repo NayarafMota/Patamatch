@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PataMatch | Adoção de Animais</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">🐾 PataMatch</div>
+
+      <div class="nav-links">
+        <a href="#animais">Animais</a>
+        <a href="#" id="abrirCadastroNav">Cadastrar animal</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Encontre um novo melhor amigo</h1>
+        <p>
+          O PataMatch conecta pessoas interessadas em adotar e doar animais,
+          tornando o processo mais simples, humano e acessível.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn btn-primary" id="abrirLogin">Entrar no sistema</button>
+          <button class="btn btn-secondary hidden" id="logoutBtn">Sair</button>
+          <a href="#animais" class="btn btn-secondary">Ver animais</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Adoção com carinho</h3>
+        <p>
+          Faça login como adotante ou doador e participe do processo de adoção
+          de forma prática, organizada e acolhedora.
+        </p>
+
+        <div id="usuarioLogadoBox" class="usuario-logado hidden"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="animais" class="section">
+      <div class="section-header">
+        <h2>Animais disponíveis</h2>
+        <p>Escolha um pet e demonstre interesse em adoção.</p>
+      </div>
+
+      <div class="filtros">
+        <button class="filtro-btn active" data-filtro="todos">Todos</button>
+        <button class="filtro-btn" data-filtro="Cachorro">Cachorros</button>
+        <button class="filtro-btn" data-filtro="Gato">Gatos</button>
+        <button class="filtro-btn" data-filtro="Coelho">Coelhos</button>
+        <button class="filtro-btn" data-filtro="Passarinho">Passarinhos</button>
+      </div>
+
+      <div id="animaisContainer" class="cards-grid"></div>
+    </section>
+
+    <section id="contato" class="section">
+      <div class="section-header">
+        <h2>Contato</h2>
+        <p>Projeto desenvolvido para portfólio acadêmico e profissional.</p>
+      </div>
+
+      <div class="contact-box">
+        <p><strong>Projeto:</strong> PataMatch</p>
+        <p><strong>Desenvolvido por:</strong> Nayara Mota Ferreira</p>
+        <p>
+          <strong>GitHub:</strong>
+          <a href="https://github.com/NayarafMota" target="_blank">github.com/NayarafMota</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Login -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content modal-pequeno">
+      <button id="fecharLoginModal" class="close-btn">&times;</button>
+      <h3>Entrar no sistema</h3>
+      <p>Escolha seu perfil para acessar as funcionalidades.</p>
+
+      <form id="formLogin" class="form-cadastro modal-form">
+        <input type="text" id="loginNome" placeholder="Seu nome" required />
+
+        <select id="loginTipo" required>
+          <option value="">Selecione seu perfil</option>
+          <option value="Adotante">Adotante</option>
+          <option value="Doador">Doador</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+
+      <p id="loginSucesso" class="sucesso hidden"></p>
+    </div>
+  </div>
+
+  <!-- Modal Cadastro -->
+  <div id="cadastroModal" class="modal hidden">
+    <div class="modal-content modal-grande">
+      <button id="fecharCadastroModal" class="close-btn">&times;</button>
+      <h3>Cadastrar animal</h3>
+      <p>Área disponível apenas para usuários do tipo doador.</p>
+
+      <form id="formCadastroAnimal" class="form-cadastro">
+        <input type="text" id="animalNome" placeholder="Nome do animal" required />
+        <input type="number" id="animalIdade" placeholder="Idade" min="0" required />
+
+        <select id="animalTipo" required>
+          <option value="">Selecione o tipo</option>
+          <option value="Cachorro">Cachorro</option>
+          <option value="Gato">Gato</option>
+          <option value="Coelho">Coelho</option>
+          <option value="Passarinho">Passarinho</option>
+        </select>
+
+        <input type="text" id="animalRaca" placeholder="Raça" required />
+        <input type="text" id="animalTemperamento" placeholder="Temperamento" required />
+        <input type="text" id="animalImagem" placeholder="URL da imagem" required />
+        <textarea id="animalHistoria" rows="4" placeholder="História do animal" required></textarea>
+
+        <button type="submit" class="btn btn-primary">Cadastrar animal</button>
+      </form>
+
+      <p id="cadastroSucesso" class="sucesso hidden"></p>
+    </div>
+  </div>
+
+ 
+  <div id="modal" class="modal hidden">
+    <div class="modal-content modal-pequeno">
+      <button id="fecharModal" class="close-btn">&times;</button>
+      <h3>Interesse em adoção</h3>
+      <p id="modalTexto"></p>
+
+      <form id="formInteresse">
+        <input type="text" id="nomeUsuario" placeholder="Seu nome" required />
+        <input type="email" id="emailUsuario" placeholder="Seu e-mail" required />
+        <textarea id="mensagemUsuario" rows="4" placeholder="Escreva uma mensagem"></textarea>
+        <button type="submit" class="btn btn-primary">Enviar interesse</button>
+      </form>
+
+      <p id="mensagemSucesso" class="sucesso hidden"></p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 PataMatch • Projeto de portfólio</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
